@@ -1,4 +1,4 @@
-JavaScript is
+JavaScript is:
 
 * much higher-level than C/C++ or even Java
 * interpreted (not compiled)
