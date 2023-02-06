@@ -3,7 +3,7 @@
 // constant variables
 const x1 = 2;
 // console.log(var2);
-// var2 = 4; // TypeError: Assignment to constant variable.
+// x1 = 4; // TypeError: Assignment to constant variable.
 
 // let variables
 let x2 = 1;

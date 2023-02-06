@@ -19,3 +19,9 @@ JavaScript is not:
 * object-oriented or class-based
 
 JavaScript does not need semicolons, but they are good practice.
+
+Recommendations:
+
+* VSCode
+  * ESLint extension
+  * Prettier extension

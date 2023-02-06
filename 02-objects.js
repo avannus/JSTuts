@@ -18,7 +18,7 @@ Objects are effectively hash-maps, O(1) typical operation time
 // Objects can be declared with the object literal syntax
 const obj1 = {
   key1: 'value1',
-  key2: 2,
+  'key2': 2,
   key3: [1, 2, 3],
   key4: {
     nestedKey1: 'value5',
@@ -32,7 +32,6 @@ const obj1 = {
 };
 
 // console.log(obj1);
-// { key1: 'value1', key2: 2, key3: [ 1, 2, 3 ], key4: { key5: 'value5' } }
 
 ////////////////////
 
@@ -41,20 +40,11 @@ const obj2 = {};
 
 // console.log(typeof(obj2));
 // object
+
 // note that this is not undefined (or null)
 
 // console.log(obj2);
 // {}
-
-////////////////////
-
-// note that const does not prevent mutation of values, but it does prevent reassignment
-obj2.key1 = 'new value';
-// console.log(obj2.key1);
-// new value
-
-// obj2 = { key1: 'new value' };
-// TypeError: Assignment to constant variable.
 
 ////////////////////
 
@@ -76,7 +66,20 @@ obj2.key1 = 'new value';
 
 ////////////////////
 
+// Assigning new data in objects
+obj2.key1 = 'new value';
+// console.log(obj2.key1);
+// new value
+
+// note that const does not prevent mutation of values, but it does prevent reassignment
+
+// obj2 = { key1: 'new value' };
+// TypeError: Assignment to constant variable.
+
+////////////////////
+
 // objects can have functions as values
+
 // console.log(obj1.functionKey);
 // [Function: functionKey]
 
