@@ -45,10 +45,12 @@ function addTwoNumbersCallback(x, y, callback) {
 ////////////////////
 
 // functions can be anonymous
-// console.log(addTwoNumbersCallback(1, 2, function(x, y) {x + y}));
+// console.log(addTwoNumbersCallback(1, 2, function(x, y) {return x + y}));
 
 // anonymous functions can be arrow functions (and generally should be)
-// console.log(addTwoNumbersCallback(1, 2, (x, y) => x + y));
+// console.log(addTwoNumbersCallback(1, 2, (x, y) => {
+//   return x + y;
+// }));
 
 ////////////////////
 
@@ -67,7 +69,7 @@ function multiplyTwoNumbers(x, y) {
 function multiplyTwoNumbersWithDefault(x, y = 1) {
   return x * y;
 }
-console.log(multiplyTwoNumbersWithDefault(1));
+// console.log(multiplyTwoNumbersWithDefault(1));
 
 // you can also use optional arguments
 function multiplyTwoNumbersWithOptional(x, y) {

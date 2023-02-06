@@ -49,7 +49,7 @@ const obj2 = {};
 ////////////////////
 
 // you can access object values with dot notation or bracket notation (default should be dot notation)
-// console.log(obj1.key1);
+// console.log(obj1.key4);
 // value1
 
 // console.log(obj1['key3']);
