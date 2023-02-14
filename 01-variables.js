@@ -41,23 +41,23 @@ All Number primitives are 64 bit floating point numbers
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures
 */
 
-let x3a = 3; // Number type
+const x3a = 3; // Number type
 // console.log(typeof x3a);
 // number
 
-let x3b = 3.5; // Number type
+const x3b = 3.5; // Number type
 // console.log(typeof x3a);
 // number
 
-let x4a = "Hello World!"; // String type
+const x4a = "Hello World!"; // String type
 // console.log(typeof x4a);
 // string
 
-let x4b = 'Hello World!'; // String type
+const x4b = 'Hello World!'; // String type
 // console.log(typeof x4b);
 // string
 
-let x5 = true; // Boolean type
+const x5 = true; // Boolean type
 // console.log(typeof x5);
 // boolean
 
@@ -75,11 +75,11 @@ let x6 = null; // Null type
 // console.log(x6 === null);
 // true
 
-let x8 = [1, 2, 3]; // Array type
+const x8 = [1, 2, 3]; // Array type
 // console.log(typeof x8);
 // object
 
-let x9 = { a: 1, b: 2, c: 3 };
+const x9 = { a: 1, b: 2, c: 3 };
 // console.log(typeof x9);
 // object
 
