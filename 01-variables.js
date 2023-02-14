@@ -28,6 +28,7 @@ Use `const` by default, and `let` if you need to change the value.
 7 primitive types in JavaScript
 Number, String, Boolean, Undefined, Null, Symbol, BigInt
 All other types are objects
+Note that primitives are pass by value, objects are pass by reference
 
 Null must be assigned explicitly. It is not the same as undefined.
 
@@ -61,15 +62,15 @@ const x5 = true; // Boolean type
 // console.log(typeof x5);
 // boolean
 
-let x7a = undefined; // Undefined type
+let x6a = undefined; // Undefined type
 // console.log(typeof x7a);
 // undefined
 
-let x7b; // Undefined type
+let x6b; // Undefined type
 // console.log(typeof x7b);
 // undefined
 
-let x6 = null; // Null type
+let x7 = null; // Null type
 // console.log(typeof x6);
 // object
 // console.log(x6 === null);
