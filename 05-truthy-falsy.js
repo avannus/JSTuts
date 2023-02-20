@@ -6,7 +6,7 @@
  * Javascript handles truthy and falsy values differently than other languages.
  * 
  * In Java, true and false are the only boolean values.
- * You can make a boolean by comparing two values, or by having a boolean variable.
+ * You can determine a boolean by comparing two values, or by having a boolean variable.
  * You can do this in Javascript too.
  * Javascript compares the values of primitives, and compares the references of objects.
  */
@@ -39,6 +39,9 @@ const x5 = x3;
 
 // console.log(12.3 == '12.3');    // true
 // console.log(12.3 == '12');      // false
+// console.log(12.3 == '12.30');   // true
+// console.log(12.3 > '12');       // true
+// console.log(12.3 < '12');       // false
 
 // console.log(12.3 == 'dave');    // false
 // console.log(12.3 > 'dave');     // false
@@ -112,7 +115,7 @@ const y2 = 12;
 // printTruthy(y2-y2);             // Value '0' is falsy
 
 // printTruthy(!y1);               // Value 'true' is truthy
-// printTruthy(!"falsy string");   // Value 'false' is falsy
+// printTruthy(!"truthy string");  // Value 'false' is falsy
 
 // printTruthy(' ');               // Value ' ' is truthy
 // printTruthy('0.00000001');      // Value '0.00000001' is truthy
@@ -133,7 +136,7 @@ while (a) {
 // Javascript has a ternary operator, and the condition is truthy/falsy.
 
 const b1 = false ? 'truthy' : 'falsy';
-// console.log(b1); // truthy
+// console.log(b1); // falsy
 
 // console.log(4 ? 'truthy' : 'falsy'); // truthy
 
@@ -176,14 +179,14 @@ const modifyX = (x) => {
 
 const x = {};
 
-printTruthy(0 || 5 || modifyX(x));        // Value '5' is truthy
-console.log(`x.key = ${x.key}`);          // x.key = undefined
+// printTruthy(0 || 5 || modifyX(x));        // Value '5' is truthy
+// console.log(`x.key = ${x.key}`);          // x.key = undefined
 
-printTruthy(0 && modifyX(x));             // Value '0' is falsy
-console.log(`x.key = ${x.key}`);          // x.key = undefined
+// printTruthy(0 && modifyX(x));             // Value '0' is falsy
+// console.log(`x.key = ${x.key}`);          // x.key = undefined
 
-printTruthy(0 || modifyX(x) || 5);        // Value 'value' is truthy
-console.log(`x.key = ${x.key}`);          // x.key = value
+// printTruthy(0 || modifyX(x) || 5);        // Value 'value' is truthy
+// console.log(`x.key = ${x.key}`);          // x.key = value
 
 ////////////////////
 

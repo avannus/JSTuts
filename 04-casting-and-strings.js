@@ -24,7 +24,7 @@
 
 // console.log(1 + 1 + 'a');    // 2a
 // console.log('a' + 1 + 1);    // a11
-// console.log('a' + (1 + 1));  // a11
+// console.log('a' + (1 + 1));  // a2
 
 ////////////////////
 
