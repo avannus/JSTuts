@@ -1,27 +1,28 @@
 /*
-7 primitive types in JavaScript:
-Number, BigInt, String, Boolean, Undefined, Null, Symbol
-*All* other variables are objects (including arrays and functions).
-Note that primitives are passed by value, objects are passed by reference.
+  7 primitive types in JavaScript:
+  Number, BigInt, String, Boolean, Undefined, Null, Symbol
+  *All* other variables are objects (including arrays and functions).
+  Note that primitives are passed by value, objects are passed by reference.
 
-Null must be assigned explicitly. It is not the same as undefined.
+  Null must be assigned explicitly. It is not the same as undefined.
 
-When you use the typeof operator, it doesn't always return the type you expect:
-`typeof null` returns "object"
-`typeof Array` returns "object"
-`typeof Function` returns "function"
+  When you use the typeof operator, it doesn't always return the type you expect:
+  `typeof null` returns "object"
+  `typeof Array` returns "object"
+  `typeof Function` returns "function"
 
-All Number primitives are 64-bit floating point numbers.
+  All Number primitives are 64-bit floating point numbers.
 
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures
 */
 
 
 // NUMBER TYPE
-const myNum1 = 3; // Number type
+const myNum1 = 10; // Number type
 // console.log(typeof myNum1); // "number"
 
-const myNum2 = 3.5; // Number type
+const myNum2 = 3.5e-6; // Number type
+// console.log(myNum2); // 0.0000035
 // console.log(typeof myNum2); // "number"
 const myNum3 = NaN; // special "Not a Number" value of Number type
 // console.log(typeof myNum3); // "number"
@@ -48,31 +49,35 @@ const myBigInt3 = BigInt("0x10000000000000000000000000000000000000"); // BigInt 
 const myStr1 = "Hello World!"; // String type
 // console.log(typeof myStr1); // "string"
 
-const myStr2 = 'Hello World!'; // String type
-// console.log(typeof myStr2); // "string"
+let myStr2 = 'Hello World!'; // String type
+// console.log(myStr1 === myStr2); // true
 
-console.log(myStr1 === myStr2); // true
+let myStr3 = myStr2; // String type
+// console.log(myStr2 === myStr3); // true
+myStr2 = "Goodbye!";
+// console.log(myStr2); // "Goodbye!"
+// console.log(myStr3); // "Hello World!"
 
-const x5 = true; // Boolean type
-// console.log(typeof x5); // "boolean"
+// Strings can be constructed via template literal
+// 
+const myStr4 = `9 + ${myNum1} = ${42 / 2}`;
+console.log(myStr4); // "9 + 10 = 21"
 
-let x6a = undefined; // Undefined type
-// console.log(typeof x6a); // "undefined"
 
-let x6b; // Undefined type
-// console.log(typeof x6b); // "undefined"
+// CONSTANT PRIMITIVES
 
-let x7 = null; // Null type
-// console.log(typeof x7); // "object"
-// console.log(x7 === null); // true
+const myBool1 = true; // Boolean type
+// console.log(typeof myBool1); // "boolean"
 
-const x8 = [1, 2, 3]; // Array type
-// console.log(typeof x8); // "object"
+let myUndefined1 = undefined; // Undefined type
+// console.log(typeof myUndefined); // "undefined"
 
-const x9 = { a: 1, b: 2, c: 3 };
-// console.log(typeof x9); // "object"
+let myUndefined2; // Undefined type
+// console.log(typeof myUndefined2); // "undefined"
 
-function x10() {};
-// console.log(typeof x10); // "function"
+let myNull1 = null; // Null type
+// console.log(typeof myNull1); // "object"
+// console.log(myNull1 === null); // true
 
-// technically, there are also
+// Symbol type is not commonly used
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol

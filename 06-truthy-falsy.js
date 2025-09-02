@@ -3,7 +3,7 @@
 ////////////////////
 
 /**
- * Javascript handles truthy and falsy values differently than other languages.
+ * Javascript handles truthy and falsy values differently than other languages (though it's not dissimilar to C).
  * 
  * In Java, true and false are the only boolean values.
  * You can determine a boolean by comparing two values, or by having a boolean variable.
@@ -11,51 +11,24 @@
  * Javascript compares the values of primitives, and compares the references of objects.
  */
 
-const x0 = true;
-
 const x1 = 12.3;
 const x2 = 12.3;
-
-const x3 = {
-  key: 'value',
-};
-const x4 = { key: 'value' };
-const x5 = x3;
 
 // Javascript has two main ways to compare values:
 // The first is "loose" comparisons: ==, !=, >=, >, etc.
 // These do type conversion.
 
-// console.log(x0 == true);        // true
-
-// console.log(x1 == x2);          // true
-// console.log('dave' == 'dave');  // true
-// console.log(x1 == 12);          // false
-
-// console.log({} == {});          // false
-// console.log(x3 == x4);          // false
-// console.log(x3 == x5);          // true
-
-
+// console.log(12.3 == 12.3);      // true
 // console.log(12.3 == '12.3');    // true
-// console.log(12.3 == '12');      // false
-// console.log(12.3 == '12.30');   // true
-// console.log(12.3 > '12');       // true
-// console.log(12.3 < '12');       // false
-
-// console.log(12.3 == 'dave');    // false
-// console.log(12.3 > 'dave');     // false
-// console.log(12.3 < 'dave');     // false
+// console.log(12.3 != '12.3');    // false
 // console.log(12.3 != 'dave');    // true
 
-// console.log('value' == x3);     // false
-
-// Generally, the behavior from loose comparisons is less predictable than in other languages.
+// Generally, the behavior from loose comparisons is less predictable.
 
 ////////////////////
 
 // The second is "strict" comparisons: ===, !==
-// These compare types AND values.
+// These compare types AND values (no type coercion).
 
 // console.log(12.3 === 12.3);      // true
 // console.log(12.3 === '12.3');    // false
@@ -69,24 +42,27 @@ const x5 = x3;
  * You can do comparisons per usual like `if (x >= 17)`.
  * However, you can also pass in any non-zero value, and it will evaluate to true.
  * In C:
- * int y = 0;
- * if (y) {...} // evaluates to false
- * int z = 1;
- * if (z) {...} // evaluates to true
- * 
+ * int num0 = 0;
+ * if (num0) {...} // evaluates to false
+ *
+ * int num1 = 1;
+ * if (num1) {...} // evaluates to true
+ *
+ * int *x = malloc(sizeof(int));
+ * if (x) {...} // evaluates to true unless null pointer
+ *
  * Javascript is similar to C in this regard.
  * 
- * In Javascript, there are only these falsy values:
- * false              (primitive Boolean)
+ * Here is every value that evaluates to false:
  * 0, -0, NaN         (primitive Number)
  * 0n                 (primitive Bigint)
  * ""                 (primitive String)
- * null               (primitive Null)
+ * false              (primitive Boolean)
  * undefined          (primitive Undefined)
- * (There's also document.all stuff, but it's deprecated, ignorable)
- * https://developer.mozilla.org/en-US/docs/Glossary/Falsy
+ * null               (primitive Null)
+ * (There's technically also the document.all object, but it's deprecated, ignorable)
  * 
- * Everything else is truthy.
+ * Every other values is truthy.
  */
 
 // helper function to print if a value is truthy or falsy
@@ -98,28 +74,32 @@ const printTruthy = (x) => {
   }
 }
 
-// printTruthy(false);             // Value 'false; is falsy
 // printTruthy(0);                 // Value '0; is falsy
 // printTruthy(-0);                // Value '0; is falsy
 // printTruthy(NaN);               // Value 'NaN; is falsy
 // printTruthy(0n);                // Value '0n; is falsy
 // printTruthy("");                // Value '' is falsy
-// printTruthy(null);              // Value 'null' is falsy
+// printTruthy(false);             // Value 'false; is falsy
 // printTruthy(undefined);         // Value 'undefined' is falsy
+// printTruthy(null);              // Value 'null' is falsy
 
 const y1 = 0;
 const y2 = 12;
 // printTruthy(y1);                // Value '0' is falsy
+// printTruthy(y2 - y2);           // Value '0' is falsy
+
 // printTruthy(y2);                // Value '12' is truthy
 // printTruthy(y1 + y2);           // Value '12' is truthy
-// printTruthy(y2-y2);             // Value '0' is falsy
-
-// printTruthy(!y1);               // Value 'true' is truthy
-// printTruthy(!"truthy string");  // Value 'false' is falsy
-
 // printTruthy(' ');               // Value ' ' is truthy
 // printTruthy('0.00000001');      // Value '0.00000001' is truthy
 // printTruthy({});                // Value '[object Object]' is truthy
+
+////////////////////
+
+// values can be coerced into a boolean primitive by using a double `!` (not) operator
+
+// printTruthy(!!0);               // Value 'false' is falsy
+// printTruthy(!!"truthy string"); // Value 'true' is truthy
 
 ////////////////////
 
@@ -172,37 +152,36 @@ function printTruthyTernary(x) {
 ////////////////////
 
 // note that there is short-circuiting behavior with && and ||.
-const modifyX = (x) => {
-  x.key = 'value';
-  // returns undefined by default (falsy)
+const logWhenRan = () => {
+  console.log('logWhenRan!');
+  // returns `undefined` by default (falsy)
 }
 
-const x = {};
+// printTruthy(logWhenRan() && 10);  // logWhenRan! Value 'undefined' is falsy 
+// printTruthy(!logWhenRan() && 10); // logWhenRan! Value '10' is truthy 
+// printTruthy(0 && logWhenRan());   //             Value '0' is falsy 
 
-// printTruthy(0 || 5 || modifyX(x));        // Value '5' is truthy
-// console.log(`x.key = ${x.key}`);          // x.key = undefined
+// printTruthy(logWhenRan() || 10);     // logWhenRan! Value '5' is truthy
+// printTruthy(0 || 5 || logWhenRan()); //             Value '5' is truthy
 
-// printTruthy(0 && modifyX(x));             // Value '0' is falsy
-// console.log(`x.key = ${x.key}`);          // x.key = undefined
+// Example of usefulness:
+const unknownObj1 = {}; // unknown if name exists on this at this point
+const firstName = unknownObj1.name || 'MISSING';
 
-// printTruthy(0 || modifyX(x) || 5);        // Value 'value' is truthy
-// console.log(`x.key = ${x.key}`);          // x.key = value
+const shouldRun = false;
+shouldRun && logWhenRan();
 
 ////////////////////
 
-// We can use this to assign a default value to a variable.
+// If you wish to use the || shorthand but only for undefined/null values, use nullish coalescing
+const unknownObj2 = {
+  myChildObj: null,
+  myNum: 0,
+}; // unknown if name exists on this at this point
 
-const z0 = "";
-
-const z1 = z0 || 5;
-// printTruthy(z1);    // Value '5' is truthy
-
-const z2 = z0 || 0;
-// printTruthy(z2);    // Value '0' is falsy
-
-const z3 = 0 || z0;
-// printTruthy(z3);    // Value '' is falsy
-
-// This is a very common pattern in Javascript.
-// Example: You want to connect to a default server, but if the user specifies a server, use that instead.
-// const server = userSpecifiedServer || defaultServer;
+const myNumDefault1 = unknownObj2.myNum || -1;
+// console.log(myNumDefault1); // -1
+const myNumDefault2 = unknownObj2.myNum ?? -1;
+// console.log(myNumDefault2); // 0
+const myNumDefault3 = unknownObj2.myChildObj ?? {};
+// console.log(myNumDefault3); // {}
