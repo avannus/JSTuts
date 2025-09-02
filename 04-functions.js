@@ -15,6 +15,17 @@ const addTwoNumbersWithArrow = (x, y) => {
 // console.log(addTwoNumbersWithArrow(1, 2)); // 3
 
 
+// functions can be nested
+const addThreeNumbers = (x, y, z) => {
+  function addTwoMoreNumbers(a, b) {
+    return a + b;
+  }
+
+  return x + addTwoMoreNumbers(y, z);
+}
+// console.log(addThreeNumbers(10, 11, 12));
+
+
 // functions declared with the function keyword can be called before they are declared
 // console.log(makeLargerKeyword(10)); // 20
 function makeLargerKeyword(a) {
@@ -79,7 +90,7 @@ function multiplyTwoNumbers(x, y) {
 function multiplyTwoNumbersWithDefault(x, y = 2) {
   return x * y;
 }
-console.log(multiplyTwoNumbersWithDefault(5)); // 10
+// console.log(multiplyTwoNumbersWithDefault(5)); // 10
 
 // you can also use optional arguments
 function multiplyTwoNumbersWithOptional(x, y) {

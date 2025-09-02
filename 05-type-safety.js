@@ -43,7 +43,7 @@
 // If the arg isn't a string, it is stringified by the function (even if it's a number).
 const smallNumber = 0.00000037;
 const largeNumber = 776e20;
-console.log(parseInt(largeNumber)); // 7
-console.log(parseInt(smallNumber)) // 3
+// console.log(parseInt(largeNumber)); // 7
+// console.log(parseInt(smallNumber)) // 3
 
 // this is included as a general warning, not as common knowledge

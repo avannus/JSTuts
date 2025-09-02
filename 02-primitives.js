@@ -61,7 +61,7 @@ myStr2 = "Goodbye!";
 // Strings can be constructed via template literal
 // 
 const myStr4 = `9 + ${myNum1} = ${42 / 2}`;
-console.log(myStr4); // "9 + 10 = 21"
+// console.log(myStr4); // "9 + 10 = 21"
 
 
 // CONSTANT PRIMITIVES

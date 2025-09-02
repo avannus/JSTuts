@@ -39,4 +39,4 @@ if (true) {
   var myVar1 = 9; // overwrites the previous myVar1 variable
   // console.log(myVar1); // 9
 }
-console.log(myVar1); // 9
+// console.log(myVar1); // 9
