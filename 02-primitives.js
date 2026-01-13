@@ -110,7 +110,7 @@ const myBool1 = true;
 // console.log(typeof myBool1);
 
 let myUndefined1 = undefined;
-// console.log(typeof myUndefined);
+// console.log(typeof myUndefined1);
 
 let myUndefined2;
 // console.log(typeof myUndefined2);
@@ -200,7 +200,7 @@ mySet1[Symbol.iterator] = function* () {
   }
 }
 // note that this does not conflict with `mySet1.iterator`
-console.log(mySet1);
+// console.log(mySet1);
 
 for (const subStr of mySet1) {
   // console.log(subStr);

@@ -143,13 +143,13 @@ myObj4.newVar = 12;
 // console.log(myObj4);
 
 myObj4.hi = 'world'
-console.log(myObj4);
+// console.log(myObj4);
 
 myObj4.newVar = undefined;
-console.log(myObj4);
+// console.log(myObj4);
 
 delete myObj4.newVar;
-console.log(myObj4);
+// console.log(myObj4);
 
 ////////////////////
 

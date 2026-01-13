@@ -160,32 +160,32 @@ async function main() {
   ////////////////////
 
   {
-  // Example: network calls
-  // We wish to return two dog facts and a cat fact as a string using the following APIs
+  // // Example: network calls
+  // // We wish to return two dog facts and a cat fact as a string using the following APIs
 
-  const dogFactFetchResponsePromise = fetch('https://dogapi.dog/api/v2/facts?limit=2');
+  // const dogFactFetchResponsePromise = fetch('https://dogapi.dog/api/v2/facts?limit=2');
 
-  // console.log(dogFactFetchResponsePromise);
-  // ------------------
-  await dogFactFetchResponsePromise; // await for the promise to resolve before executing any more code
-  // console.log(dogFactFetchResponsePromise);
+  // // console.log(dogFactFetchResponsePromise);
+  // // ------------------
+  // await dogFactFetchResponsePromise; // await for the promise to resolve before executing any more code
+  // // console.log(dogFactFetchResponsePromise);
 
-  const dogFactResponse = await dogFactFetchResponsePromise; // unwrap the promise and get the resolved data, in practice we would have just awaited the fetch above directly
-  // console.log(dogFactResponse);
-  // fetch was designed where the response does not have to wait for all of the data to be included. This lets us retrieve it in a few ways. We can use the attached async json() function for now
-  // https://developer.mozilla.org/en-US/docs/Web/API/Response#instance_methods
+  // const dogFactResponse = await dogFactFetchResponsePromise; // unwrap the promise and get the resolved data, in practice we would have just awaited the fetch above directly
+  // // console.log(dogFactResponse);
+  // // fetch was designed where the response does not have to wait for all of the data to be included. This lets us retrieve it in a few ways. We can use the attached async json() function for now
+  // // https://developer.mozilla.org/en-US/docs/Web/API/Response#instance_methods
 
-  const dogFactJson = await dogFactResponse.json();
-  // console.log(JSON.stringify(dogFactJson, undefined, 2));
-  const dogFacts = dogFactJson?.data?.map((curr) => curr?.attributes?.body || '') || [];
-  // console.log(dogFacts);
+  // const dogFactJson = await dogFactResponse.json();
+  // // console.log(JSON.stringify(dogFactJson, undefined, 2));
+  // const dogFacts = dogFactJson?.data?.map((curr) => curr?.attributes?.body || '') || [];
+  // // console.log(dogFacts);
 
 
-  const catFactResponse = await fetch('https://meowfacts.herokuapp.com/');
-  const catFactJson = await catFactResponse.json();
-  const catFacts = catFactJson.data;
+  // const catFactResponse = await fetch('https://meowfacts.herokuapp.com/');
+  // const catFactJson = await catFactResponse.json();
+  // const catFacts = catFactJson.data;
 
-  console.log(`Dog fact 1: ${dogFacts[0]}\nDog fact 2: ${dogFacts[1]}\nCat fact 1: ${catFacts[0]}`);
+  // console.log(`Dog fact 1: ${dogFacts[0]}\nDog fact 2: ${dogFacts[1]}\nCat fact 1: ${catFacts[0]}`);
   }
 
   ////////////////////

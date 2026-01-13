@@ -157,6 +157,7 @@ const arrowFunc5 = a => ({ a }); // returns an object literal
  * Gets the factors of a number, with an exclusion list for some reason.
  * When the code is questionable or confusing (like here), justify why it's not more straightforward in this summary.
  * I'm mixing types like crazy to show a bunch of examples.
+ * There are bugs here, find them!
  * @param {number} num - the number to find the factors of
  * @param {Set<number> | number[] ?} exclude - numbers to exclude, if any
  * @param {object} options

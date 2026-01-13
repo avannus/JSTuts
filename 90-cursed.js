@@ -1,0 +1,186 @@
+#!/usr/bin/env node
+// ^ allows this to be run via `./<file-name>` instead of `node ./<file-name>`
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#hashbang_comments
+
+/*
+  Bonus content, but weird behavior within js
+*/
+
+// 01-variables
+
+// you can actually interchangeably use unicode escape sequences in variable names
+const 你好 = "Wassup Beijing";
+// console.log({ \u4f60\u597d });
+
+const \u{0061}\u{0062} = 'c\u0064';
+// console.log({ a\u{0062} });
+
+
+// javascript has a "strict" mode (...which means that it's in "sloppy" mode by default lol)
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
+// in sloppy mode, assigning to a variable that doesn't exist will actually create a new global variable
+function strictTest() {
+  "use strict";
+  const myVar2 = 'test2';
+  myvar2 = 'done testing2'; // Will cause Reference Error
+}
+
+function sloppyTest() {
+  const myVar1 = 'test';
+  myvar1 = 'done testing'; // new global (non-scoped) variable myvar1 is created
+}
+
+// console.log(globalThis);
+// // strictTest(); // will fail in strict mode
+// sloppyTest();
+// console.log(myvar1); // defined by sloppyTest
+// console.log(globalThis);
+
+
+// 'undefined' (the keyword) is actually not a reserved word
+{
+  const undefined = 'I just made undefined a variable';
+  let anUndefinedVariable;
+  // console.log(undefined);
+  // console.log(anUndefinedVariable);
+}
+// console.log(undefined);
+
+
+// 02-primitives
+
+// numbers in JavaScript are IEEE-754 floats, which is basically base2 scientific notation
+// you may have heard to never compare floats, but it *can* be okay...
+
+// 64-bit floats have 1 bit for sign, 11 bits for the exponent, and 52 bits for the fraction
+// in the format [+/-] 1.[fraction] * 2^[exponent]
+// in base2, numbers can only be represented by a finite number of base2 digits iff they can be written as `a * (2^n)`, where a and n are integers (positive or negative)
+// (note that `a * 2^0 === a`, so integers (that are under 53 bytes) are exact)
+const myExactFloat1 = 12345; // 12345 === 12345 * 2^0, so it will terminate in base2
+const myExactFloat2 = 0.375; // 0.375 === 3/8 === 3 / (2^3), so it will terminate in base2
+const myLossyFloat1 = 0.1; // 0.1 === 1 / (2 * 5), so it cannot terminate in base2
+
+// fractional components beyond 52 bits (including all non-terminating fractions) are lossy
+// by necessity, absolute precision is halved every time a number doubles
+// this is why comparing floats is considered dangerous: for example, floats are non-associative
+const math1 = (0.2 + 10) - 10;
+const math2 = 0.2 + (10 - 10);
+// console.log(math1);
+// console.log(math2);
+// console.log(math1 == math2);
+
+const math3 = (0.015625 + 10) - 10;
+const math4 = 0.015625 + (10 - 10);
+// console.log(math3);
+// console.log(math4);
+// console.log(math3 == math4);
+
+// booleans are a primitive
+// but new Boolean()s are an object...
+// you should use `!!myVar` to coerce something into a boolean, not the Boolean constructor
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean#boolean_primitives_and_boolean_objects
+const bool1 = false;
+const bool2 = Boolean(false);
+const bool3 = new Boolean(false);
+// console.log(typeof bool1);
+// console.log(typeof bool2);
+// console.log(typeof bool3);
+// console.log(!!bool1);
+// console.log(!!bool2);
+// console.log(!!bool3);
+
+////////////////////
+
+// 03-coercion
+// coercion is cursed
+// see 91
+
+////////////////////
+
+// 04-truthy-falsy
+// truthy falsy doesn't have anything notable that I know of
+// ...besides type coercion
+
+////////////////////
+
+// 05-objects
+// objects are the core of JS
+// there is a ton of complexity that you may not ever need to know about, but may be curious about
+// see the MDN docs: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Data_structures#objects
+
+////////////////////
+
+// 06-functions
+
+// no really: classes are really just special functions that return objects!
+
+class PersonClass {
+  #name;
+
+  constructor(name, age) {
+    this.#name = name;
+    this.age = age;
+  }
+
+  greet() {
+    return `Hi, I'm ${this.#name} and I'm ${this.age} years old`;
+  }
+
+  haveBirthday() {
+    this.age++;
+  }
+}
+
+// Function constructor (old-school, but still valid)
+function PersonFunction(name, age) {
+  this.name = name;
+  this.age = age;
+}
+
+// a simple approach...
+PersonFunction.prototype.greet = function() {
+  return `Hi, I'm ${this.name} and I'm ${this.age} years old`;
+};
+
+// ...though this is closer to a real class
+Object.defineProperty(PersonFunction.prototype, 'haveBirthday', {
+  value: function() {
+    this.age++;
+  },
+  writable: true,
+  enumerable: false, // this is how properties on objects can be "hidden"
+  configurable: true,
+});
+
+// console.log(PersonClass);
+// console.log(PersonFunction);
+
+
+// Both work!
+const person1 = new PersonClass('Alice', 25);
+const person2 = new PersonFunction('Bob', 30);
+
+// console.log(person1.greet());
+// console.log(person2.greet());
+
+// person1.haveBirthday();
+// person2.haveBirthday();
+// console.log(person1.age);
+// console.log(person2.age);
+
+// The C++ runtime can check the source code of both with .toString() (both get the same .toString() from Function!)
+// The engine parses the source code to detect class vs function... so it can't be *exactly* the same
+// console.log(PersonClass.toString());
+// console.log(PersonFunction.toString());
+// console.log(PersonClass);
+// console.log(PersonFunction);
+
+// ...even if we really try
+PersonFunction.prototype = PersonClass.prototype;
+// console.log(PersonFunction);
+
+////////////////////
+
+// typecasting is beyond cursed
+// below is a valid javascript program using 6 chars, no spaces
+// delete everything but this line, uncomment (even works in strict mode)

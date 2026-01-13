@@ -3,7 +3,8 @@ JavaScript is:
 * much higher-level than C/C++ or even Java
 * interpreted (not compiled), but modern engines use Just-In-Time (JIT) compilation
 * will often run with incorrect syntax, logic, or typing, but some errors will stop execution
-* typed:
+* typing
+  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Data_structures#dynamic_and_weak_typing
   * dynamically typed (types can be changed)
   * weakly typed (JS frequently does implicit type conversions)
   * duck-typed at runtime (type is determined by behavior, not explicit declaration)
@@ -12,6 +13,7 @@ JavaScript is:
 * single-threaded, but can use asynchronous operations (event loop, promises, async/await)
 * runs in a JavaScript engine, which is only a component of the runtime environment
 * will attempt to insert semicolons automatically
+  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#automatic_semicolon_insertion
 
 JavaScript is not:
 

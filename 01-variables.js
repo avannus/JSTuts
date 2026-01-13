@@ -66,7 +66,7 @@ myVar1 = "what up world";
 // console.log(myVar1);
 
 
-// var has function scope, not block scope
+// var has function scope! NOT block scope
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#example
 
 function myFunction1 () {

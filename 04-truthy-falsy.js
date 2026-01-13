@@ -31,6 +31,7 @@
  *
  * JavaScript is similar to C in being able to use a primitive to determine a branching state.
  *
+ *
  * Here is the complete list of every falsy value: https://developer.mozilla.org/en-US/docs/Glossary/Falsy
  * false                   (primitive Boolean)
  * null                    (primitive Null)
@@ -38,11 +39,12 @@
  * ""                      (primitive String)
  * 0, -0, NaN              (primitive Number)
  * 0n, (there is no -0n)   (primitive BigInt)
- * document.all            *deprecated* global constant
+ * document.all            *deprecated* global constant, ignoring this
  *
  * Every other value is truthy!
  * Every Symbol is truthy!
  * Every Object is truthy!
+ * Only primitives can be falsy!
  */
 
 // helper function to print if a value is truthy or falsy

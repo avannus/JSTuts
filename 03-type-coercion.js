@@ -16,8 +16,6 @@
  * https://www.freecodecamp.org/news/js-type-coercion-explained-27ba3d9a2839/
  */
 
-////////////////////
-
 /**
  * @returns {any} poorly documented variable, it could be anything!
  */
@@ -28,6 +26,8 @@ function myRandVar() {
 const myConst1 = myRandVar();
 const myConst2 = myRandVar();
 const myConst3 = myRandVar();
+
+////////////////////
 
 // To add two numbers,                       you can use the + operator.
 // To concatenate a string and a string,     you can use the + operator.
@@ -78,7 +78,8 @@ function myFunc1(a, b, c) {
  * @returns {string} A string of prefix `a`, with the value of `b` and `c` multiplied
  */
 function myFunc2(a, b, c) {
-  return a + b * c;
+  // return a + b * c;
+  return `${a}${b*c}`; // much more clear
 }
 
 ////////////////////
